@@ -9,21 +9,12 @@ namespace TypeOEngine.Typedeaf.Desktop
         {
         }
 
-        public override void Cleanup()
+        public override void Initialize()
         {
         }
 
-        public override void Initialize()
+        public override void Cleanup()
         {
-            if(TypeO.Context.Logger is DefaultLogger)
-            {
-                (TypeO.Context.Logger as DefaultLogger).LogToDisk = Option.SaveLogsToDisk;
-                if(!string.IsNullOrEmpty(Option.LogPath))
-                {
-                    (TypeO.Context.Logger as DefaultLogger).LogPath = Option.LogPath;
-                }
-            }
-
         }
 
         public override void LoadExtensions()
