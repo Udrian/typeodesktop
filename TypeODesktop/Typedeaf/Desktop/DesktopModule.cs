@@ -3,25 +3,30 @@ using TypeOEngine.Typedeaf.Desktop.Engine.Services;
 
 namespace TypeOEngine.Typedeaf.Desktop
 {
+    /// <summary>
+    /// Module that contains interfaces for Window and Keyboard Hardware classes
+    /// </summary>
     public class DesktopModule : Module<DesktopModuleOption>
     {
-        public DesktopModule() : base()
+        /// <inheritdoc/>
+        public DesktopModule() : base() {}
+
+        /// <inheritdoc/>
+        protected override void Initialize()
         {
         }
 
-        public override void Initialize()
+        /// <inheritdoc/>
+        protected override void Cleanup()
         {
         }
 
-        public override void Cleanup()
+        /// <inheritdoc/>
+        protected override void LoadExtensions(TypeO typeO)
         {
-        }
-
-        public override void LoadExtensions()
-        {
-            TypeO.AddService<WindowService>();
-            TypeO.AddService<KeyboardInputService>();
-            TypeO.AddService<MouseInputService>();
+            typeO.AddService<WindowService>();
+            typeO.AddService<KeyboardInputService>();
+            typeO.AddService<MouseInputService>();
         }
     }
 }

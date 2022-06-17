@@ -2,6 +2,7 @@
 using TypeOEngine.Typedeaf.Core.Common;
 using TypeOEngine.Typedeaf.Core.Engine.Contents;
 using TypeOEngine.Typedeaf.Core.Engine.Graphics;
+using TypeOEngine.Typedeaf.Core.Engine.Graphics.Interfaces;
 using TypeOEngine.Typedeaf.Core.Engine.Interfaces;
 using TypeOEngine.Typedeaf.Core.Engine.Services;
 using TypeOEngine.Typedeaf.Core.Interfaces;
@@ -19,7 +20,11 @@ namespace TypeOEngine.Typedeaf.Desktop
 
             public Game Game { get; set; }
 
-            public override void Initialize() { }
+            /// <inheritdoc/>
+            protected override void Initialize() { }
+
+            /// <inheritdoc/>
+            protected override void Cleanup() { }
 
             private DesktopWindow InstantiateWindow()
             {
@@ -32,12 +37,12 @@ namespace TypeOEngine.Typedeaf.Desktop
             public DesktopWindow CreateWindow()
             {
                 var window = InstantiateWindow();
-                window.Initialize();
+                window.Initialize(Game.Name, Vec2i.Zero, new Vec2i(800, 600));
 
                 return window;
             }
 
-            public DesktopWindow CreateWindow(string title, Vec2 position, Vec2 size, bool fullscreen = false, bool borderless = false)
+            public DesktopWindow CreateWindow(string title, Vec2i position, Vec2i size, bool fullscreen = false, bool borderless = false)
             {
                 var window = InstantiateWindow();
                 window.Initialize(title, position, size, fullscreen, borderless);
@@ -45,7 +50,7 @@ namespace TypeOEngine.Typedeaf.Desktop
                 return window;
             }
 
-            public Canvas CreateCanvas(Window window)
+            public Canvas CreateCanvas(IWindow window)
             {
                 var canvas = WindowHardware.CreateCanvas(window);
                 Logger?.Log($"Creating Canvas of type '{canvas.GetType().FullName}'");
@@ -55,7 +60,7 @@ namespace TypeOEngine.Typedeaf.Desktop
                 return canvas;
             }
 
-            public Canvas CreateCanvas(Window window, Rectangle viewport)
+            public Canvas CreateCanvas(IWindow window, Rectangle viewport)
             {
                 var canvas = CreateCanvas(window);
                 canvas.Viewport = viewport;
@@ -69,10 +74,6 @@ namespace TypeOEngine.Typedeaf.Desktop
                 Context.InitializeObject(contentLoader);
 
                 return contentLoader;
-            }
-
-            public override void Cleanup()
-            {
             }
         }
     }

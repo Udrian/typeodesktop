@@ -20,12 +20,14 @@ namespace TypeOEngine.Typedeaf.Desktop
             public Vec2 WheelPosition { get { return MouseHardware.CurrentWheelPosition; } }
             public Vec2 WheelPositionRelative { get { return MouseHardware.CurrentWheelPosition - MouseHardware.OldWheelPosition; } }
 
-            public override void Initialize()
+            /// <inheritdoc/>
+            protected override void Initialize()
             {
                 KeyConverter = new KeyConverter();
             }
 
-            public override void Cleanup()
+            /// <inheritdoc/>
+            protected override void Cleanup()
             {
             }
 

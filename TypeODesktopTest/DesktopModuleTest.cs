@@ -150,18 +150,5 @@ namespace TypeODesktopTest
             Assert.NotNull(typeO.Context.Services[typeof(KeyboardInputService)]);
             Assert.NotNull(typeO.Context.Services[typeof(MouseInputService)]);
         }
-
-        [Fact]
-        public void TestDefaultLogger()
-        {
-            var typeO = TypeO.Create<TestGame>(GameName)
-                             .LoadModule<DesktopModule>(new DesktopModuleOption() { LogPath = "test" }, false) as TypeO;
-            var module = typeO.Context.Modules.FirstOrDefault(m => m.GetType() == typeof(DesktopModule)) as DesktopModule;
-            typeO.Start();
-
-            Assert.NotNull(typeO.Context.Logger);
-            Assert.IsType<DefaultLogger>(typeO.Context.Logger);
-            Assert.Equal("test", (typeO.Context.Logger as DefaultLogger).LogPath);
-        }
     }
 }
