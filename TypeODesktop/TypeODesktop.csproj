@@ -13,5 +13,6 @@
 	</Target>
 	<ItemGroup Label="TypeOModules">
 		<ProjectReference Name="TypeOCore" Include="D:/projects/typeo/typeocore/TypeOCore/TypeOCore.csproj"/>
+		<ProjectReference Name="TypeOTK" Include="D:/projects/typeo/typeotk/TypeOTK/TypeOTK.csproj"/>
 	</ItemGroup>
 </Project>

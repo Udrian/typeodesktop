@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypeODesktopTest", "TypeODe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeOCore", "..\typeocore\TypeOCore\TypeOCore.csproj", "{C45C16F6-1D12-4A3D-8004-B244EE2A46E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeOTK", "..\typeotk\TypeOTK\TypeOTK.csproj", "{6ED1D806-14DB-4BB5-A20E-2939CF0FCBA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C45C16F6-1D12-4A3D-8004-B244EE2A46E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C45C16F6-1D12-4A3D-8004-B244EE2A46E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C45C16F6-1D12-4A3D-8004-B244EE2A46E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ED1D806-14DB-4BB5-A20E-2939CF0FCBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED1D806-14DB-4BB5-A20E-2939CF0FCBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED1D806-14DB-4BB5-A20E-2939CF0FCBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED1D806-14DB-4BB5-A20E-2939CF0FCBA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

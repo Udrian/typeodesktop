@@ -1,4 +1,6 @@
 ﻿using TypeOEngine.Typedeaf.Core.Engine;
+using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares;
+using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares.Interfaces;
 using TypeOEngine.Typedeaf.Desktop.Engine.Services;
 
 namespace TypeOEngine.Typedeaf.Desktop
@@ -27,6 +29,9 @@ namespace TypeOEngine.Typedeaf.Desktop
             typeO.AddService<WindowService>();
             typeO.AddService<KeyboardInputService>();
             typeO.AddService<MouseInputService>();
+            typeO.AddHardware<IWindowHardware, TKWindowHardware>();
+            typeO.AddHardware<IKeyboardHardware, TKKeyboardHardware>();
+            typeO.AddHardware<IMouseHardware, TKMouseHardware>();
         }
     }
 }

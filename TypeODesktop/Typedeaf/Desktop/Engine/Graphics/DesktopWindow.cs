@@ -1,6 +1,7 @@
 ﻿using TypeOEngine.Typedeaf.Core.Common;
 using TypeOEngine.Typedeaf.Core.Engine;
 using TypeOEngine.Typedeaf.Core.Engine.Graphics.Interfaces;
+using TypeOEngine.Typedeaf.Desktop.Engine.Services;
 
 namespace TypeOEngine.Typedeaf.Desktop
 {
@@ -27,12 +28,11 @@ namespace TypeOEngine.Typedeaf.Desktop
             public virtual string Title { get; set; }
             /// <inheritdoc/>
             public virtual Vec2i Size { get; set; }
-
             /// <inheritdoc/>
-            protected override void Initialize()
-            {
-                Initialize("", Vec2i.Zero, Vec2i.Zero);
-            }
+            public ICanvas Canvas { get; set; }
+
+            // Services
+            protected WindowService WindowService { get; set; }
 
             /// <summary>
             /// Initialize the Desktop Window
@@ -42,7 +42,13 @@ namespace TypeOEngine.Typedeaf.Desktop
             /// <param name="size">Window size</param>
             /// <param name="fullscreen">Window fullscreen</param>
             /// <param name="borderless">Window borders</param>
-            public abstract void Initialize(string title, Vec2i position, Vec2i size, bool fullscreen = false, bool borderless = false);
+            public abstract void Set(string title, Vec2i position, Vec2i size, bool fullscreen = false, bool borderless = false);
+
+            /// <inheritdoc/>
+            protected override void Initialize()
+            {
+                Canvas = WindowService.CreateCanvas(this);
+            }
         }
     }
 }
