@@ -1,5 +1,6 @@
 ﻿using TypeOEngine.Typedeaf.Core.Engine.Services;
 using TypeOEngine.Typedeaf.Core.Engine.Services.Input;
+using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares;
 using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares.Interfaces;
 
 namespace TypeOEngine.Typedeaf.Desktop
@@ -37,7 +38,7 @@ namespace TypeOEngine.Typedeaf.Desktop
             /// </summary>
             /// <param name="input">Input alias to map the key to</param>
             /// <param name="key">Low level key to map</param>
-            public void SetKeyAlias(object input, object key)
+            public void SetKeyAlias(object input, KeyboardKey key)
             {
                 KeyConverter.SetKeyAlias(input, key);
             }
@@ -51,7 +52,17 @@ namespace TypeOEngine.Typedeaf.Desktop
             {
                 if(!KeyConverter.ContainsInput(input)) return false;
 
-                return KeyboardHardware.CurrentKeyDownEvent(KeyConverter.GetKey(input));
+                return IsDown((KeyboardKey)KeyConverter.GetKey(input));
+            }
+
+            /// <summary>
+            /// True when input is held down
+            /// </summary>
+            /// <param name="input">Input key to check</param>
+            /// <returns>True when input is held down</returns>
+            public bool IsDown(KeyboardKey input)
+            {
+                return KeyboardHardware.CurrentKeyDownEvent(input);
             }
 
             /// <summary>
@@ -63,7 +74,17 @@ namespace TypeOEngine.Typedeaf.Desktop
             {
                 if(!KeyConverter.ContainsInput(input)) return false;
 
-                return KeyboardHardware.CurrentKeyDownEvent(KeyConverter.GetKey(input)) && KeyboardHardware.OldKeyUpEvent(KeyConverter.GetKey(input));
+                return IsPressed((KeyboardKey)KeyConverter.GetKey(input));
+            }
+
+            /// <summary>
+            /// True when input is pressed
+            /// </summary>
+            /// <param name="input">Input key to check</param>
+            /// <returns>True when input is pressed</returns>
+            public bool IsPressed(KeyboardKey input)
+            {
+                return KeyboardHardware.CurrentKeyDownEvent(input) && KeyboardHardware.OldKeyUpEvent(input);
             }
 
             /// <summary>
@@ -75,7 +96,17 @@ namespace TypeOEngine.Typedeaf.Desktop
             {
                 if(!KeyConverter.ContainsInput(input)) return false;
 
-                return KeyboardHardware.CurrentKeyUpEvent(KeyConverter.GetKey(input)) && KeyboardHardware.OldKeyDownEvent(KeyConverter.GetKey(input));
+                return IsReleased((KeyboardKey)KeyConverter.GetKey(input));
+            }
+
+            /// <summary>
+            /// True when input is released
+            /// </summary>
+            /// <param name="input">Input alias to check</param>
+            /// <returns>True when input is released</returns>
+            public bool IsReleased(KeyboardKey input)
+            {
+                return KeyboardHardware.CurrentKeyUpEvent(input) && KeyboardHardware.OldKeyDownEvent(input);
             }
         }
     }

@@ -1,5 +1,7 @@
-﻿using TypeOEngine.Typedeaf.Core.Engine.Hardwares;
+﻿using OpenTK.Windowing.GraphicsLibraryFramework;
+using TypeOEngine.Typedeaf.Core.Engine.Hardwares;
 using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares.Interfaces;
+using TypeOEngine.Typedeaf.TK.Engine.Services;
 
 namespace TypeOEngine.Typedeaf.Desktop
 {
@@ -7,6 +9,8 @@ namespace TypeOEngine.Typedeaf.Desktop
     {
         internal class TKKeyboardHardware : Hardware, IKeyboardHardware
         {
+            private TKGameService TKGameService { get; set; }
+
             public override void Initialize()
             {
             }
@@ -15,24 +19,40 @@ namespace TypeOEngine.Typedeaf.Desktop
             {
             }
 
-            public bool CurrentKeyDownEvent(object key)
+            public bool CurrentKeyDownEvent(KeyboardKey key)
             {
-                return true;
+                foreach(var game in TKGameService.TKGames)
+                {
+                    return game.KeyboardState.IsKeyDown((Keys)key);
+                }
+                return false;
             }
 
-            public bool CurrentKeyUpEvent(object key)
+            public bool CurrentKeyUpEvent(KeyboardKey key)
             {
-                return true;
+                foreach (var game in TKGameService.TKGames)
+                {
+                    return !game.KeyboardState.IsKeyDown((Keys)key);
+                }
+                return false;
             }
 
-            public bool OldKeyDownEvent(object key)
+            public bool OldKeyDownEvent(KeyboardKey key)
             {
-                return true;
+                foreach (var game in TKGameService.TKGames)
+                {
+                    return game.KeyboardState.WasKeyDown((Keys)key);
+                }
+                return false;
             }
 
-            public bool OldKeyUpEvent(object key)
+            public bool OldKeyUpEvent(KeyboardKey key)
             {
-                return true;
+                foreach (var game in TKGameService.TKGames)
+                {
+                    return !game.KeyboardState.WasKeyDown((Keys)key);
+                }
+                return false;
             }
         }
     }
