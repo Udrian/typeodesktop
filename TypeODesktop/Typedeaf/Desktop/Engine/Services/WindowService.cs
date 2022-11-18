@@ -1,7 +1,6 @@
 ﻿using TypeOEngine.Typedeaf.Core;
 using TypeOEngine.Typedeaf.Core.Common;
 using TypeOEngine.Typedeaf.Core.Engine;
-using TypeOEngine.Typedeaf.Core.Engine.Contents;
 using TypeOEngine.Typedeaf.Core.Engine.Graphics.Interfaces;
 using TypeOEngine.Typedeaf.Core.Engine.Interfaces;
 using TypeOEngine.Typedeaf.Core.Engine.Services;
@@ -60,9 +59,13 @@ namespace TypeOEngine.Typedeaf.Desktop
                 return window;
             }
 
+            /// <summary>
+            /// Creates a new Canvas tied to a window that covers the entire screen
+            /// </summary>
+            /// <param name="window">Window to attach Canvas to</param>
+            /// <returns>The newly created Canvas</returns>
             public ICanvas CreateCanvas(IWindow window)
             {
-                
                 var canvas = new TKCanvas(window, new Rectangle(new Vec2(), window.Size), (window as TKWindow)?.TKGameWindow);
                 Logger?.Log($"Creating Canvas of type '{canvas.GetType().FullName}'");
                 Context.InitializeObject(canvas);
@@ -70,21 +73,18 @@ namespace TypeOEngine.Typedeaf.Desktop
                 return canvas;
             }
 
+            /// <summary>
+            /// Creates a new Canvas tied to a window that covers the size of the viewport
+            /// </summary>
+            /// <param name="window">Window to attach Canvas to</param>
+            /// <param name="viewport">Canvas viewport</param>
+            /// <returns>The newly created Canvas</returns>
             public ICanvas CreateCanvas(IWindow window, Rectangle viewport)
             {
                 var canvas = CreateCanvas(window);
                 canvas.Viewport = viewport;
 
                 return canvas;
-            }
-
-            public ContentLoader CreateContentLoader(ICanvas canvas)
-            {
-                var contentLoader = WindowHardware.CreateContentLoader(canvas);
-                Logger?.Log($"Creating ContentLoader of type '{canvas.GetType().FullName}'");
-                Context.InitializeObject(contentLoader);
-
-                return contentLoader;
             }
         }
     }
