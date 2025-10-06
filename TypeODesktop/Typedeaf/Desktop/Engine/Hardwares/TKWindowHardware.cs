@@ -8,9 +8,9 @@ namespace TypeOEngine.Typedeaf.Desktop
     {
         internal class TKWindowHardware : Hardware, IWindowHardware
         {
-            public override void Initialize() { }
+            protected override void Initialize() { }
 
-            public override void Cleanup() { }
+            protected override void Cleanup() { }
 
             public DesktopWindow CreateWindow()
             {

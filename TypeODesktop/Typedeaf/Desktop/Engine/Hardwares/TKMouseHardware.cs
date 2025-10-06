@@ -13,11 +13,11 @@ namespace TypeOEngine.Typedeaf.Desktop
             public Vec2 CurrentWheelPosition { get; set; }
             public Vec2 OldWheelPosition { get; set; }
 
-            public override void Initialize()
+            protected override void Initialize()
             {
             }
 
-            public override void Cleanup()
+            protected override void Cleanup()
             {
             }
 

@@ -10,24 +10,24 @@ namespace TypeOEngine.Typedeaf.Desktop
         /// <summary>
         /// Abstract base class for Desktop windows that can be positioned and in windowed mode
         /// </summary>
-        public abstract class DesktopWindow : TypeObject, IWindow
+        public abstract class DesktopWindow : TypeOObject, IWindow
         {
             /// <summary>
             /// Window position
             /// </summary>
-            public virtual Vec2i Position { get; set; }
+            public abstract Vec2i Position { get; set; }
             /// <summary>
             /// Determines if the window should be in fullscreen
             /// </summary>
-            public virtual bool Fullscreen { get; set; }
+            public abstract bool Fullscreen { get; set; }
             /// <summary>
             /// Determines if the window should be without border
             /// </summary>
-            public virtual bool Borderless { get; set; }
+            public abstract bool Borderless { get; set; }
             /// <inheritdoc/>
-            public virtual string Title { get; set; }
+            public abstract string Title { get; set; }
             /// <inheritdoc/>
-            public virtual Vec2i Size { get; set; }
+            public abstract Vec2i Size { get; set; }
             /// <inheritdoc/>
             public ICanvas Canvas { get; set; }
 

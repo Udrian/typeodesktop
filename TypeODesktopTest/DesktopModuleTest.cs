@@ -4,9 +4,11 @@ using TypeOEngine.Typedeaf.Core.Common;
 using TypeOEngine.Typedeaf.Core.Engine;
 using TypeOEngine.Typedeaf.Core.Engine.Contents;
 using TypeOEngine.Typedeaf.Core.Engine.Graphics;
+using TypeOEngine.Typedeaf.Core.Engine.Graphics.Interfaces;
 using TypeOEngine.Typedeaf.Core.Engine.Hardwares;
 using TypeOEngine.Typedeaf.Desktop;
 using TypeOEngine.Typedeaf.Desktop.Engine.Graphics;
+using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares;
 using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares.Interfaces;
 using TypeOEngine.Typedeaf.Desktop.Engine.Services;
 using Xunit;
@@ -43,7 +45,7 @@ namespace TypeODesktopTest
             {
             }
 
-            public Canvas CreateCanvas(Window window)
+            public Canvas CreateCanvas(IWindow window)
             {
                 throw new System.NotImplementedException();
             }
@@ -65,30 +67,29 @@ namespace TypeODesktopTest
 
         public class TestKeyboardHardware : Hardware, IKeyboardHardware
         {
-            public override void Cleanup()
-            {
-            }
+            public override void Cleanup() { }
 
-            public bool CurrentKeyDownEvent(object key)
+            public bool CurrentKeyDownEvent(KeyboardKey key)
             {
                 throw new System.NotImplementedException();
             }
 
-            public bool CurrentKeyUpEvent(object key)
+            public bool CurrentKeyUpEvent(KeyboardKey key)
             {
                 throw new System.NotImplementedException();
             }
 
             public override void Initialize()
             {
+                throw new System.NotImplementedException();
             }
 
-            public bool OldKeyDownEvent(object key)
+            public bool OldKeyDownEvent(KeyboardKey key)
             {
                 throw new System.NotImplementedException();
             }
 
-            public bool OldKeyUpEvent(object key)
+            public bool OldKeyUpEvent(KeyboardKey key)
             {
                 throw new System.NotImplementedException();
             }
@@ -134,9 +135,9 @@ namespace TypeODesktopTest
         public void LoadDesktopModule()
         {
             var typeO = TypeO.Create<TestGame>(GameName)
-                             .AddHardware<IWindowHardware, TestWindowHardware>()
-                             .AddHardware<IKeyboardHardware, TestKeyboardHardware>()
-                             .AddHardware<IMouseHardware, TestMouseHardware>()
+                             //.AddHardware<IWindowHardware, TestWindowHardware>()
+                             //.AddHardware<IKeyboardHardware, TestKeyboardHardware>()
+                             //.AddHardware<IMouseHardware, TestMouseHardware>()
                              .LoadModule<DesktopModule>() as TypeO;
             typeO.Start();
             var module = typeO.Context.Modules.FirstOrDefault(m => m.GetType() == typeof(DesktopModule)) as DesktopModule;

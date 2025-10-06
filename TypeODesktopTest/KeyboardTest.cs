@@ -1,6 +1,7 @@
 using TypeOEngine.Typedeaf.Core;
 using TypeOEngine.Typedeaf.Core.Engine;
 using TypeOEngine.Typedeaf.Core.Engine.Hardwares;
+using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares;
 using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares.Interfaces;
 using TypeOEngine.Typedeaf.Desktop.Engine.Services;
 using Xunit;
@@ -40,32 +41,33 @@ namespace TypeODesktopTest
 
         public class TestKeyboardHardware : Hardware, IKeyboardHardware
         {
-            public override void Initialize()
-            {
-            }
-
-            public bool CurrentKeyDownEvent(object key)
-            {
-                return false;
-            }
-
-            public bool CurrentKeyUpEvent(object key)
-            {
-                return false;
-            }
-
-            public bool OldKeyDownEvent(object key)
-            {
-                return false;
-            }
-
-            public bool OldKeyUpEvent(object key)
-            {
-                return false;
-            }
-
             public override void Cleanup()
             {
+            }
+
+            public bool CurrentKeyDownEvent(KeyboardKey key)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public bool CurrentKeyUpEvent(KeyboardKey key)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public override void Initialize()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public bool OldKeyDownEvent(KeyboardKey key)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public bool OldKeyUpEvent(KeyboardKey key)
+            {
+                throw new System.NotImplementedException();
             }
         }
 

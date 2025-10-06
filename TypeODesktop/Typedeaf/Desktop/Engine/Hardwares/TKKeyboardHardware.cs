@@ -11,11 +11,11 @@ namespace TypeOEngine.Typedeaf.Desktop
         {
             private TKGameService TKGameService { get; set; }
 
-            public override void Initialize()
+            protected override void Initialize()
             {
             }
 
-            public override void Cleanup()
+            protected override void Cleanup()
             {
             }
 
