@@ -14,5 +14,7 @@
 	<ItemGroup Label="TypeOModules">
 		<ProjectReference Name="TypeOCore" Include="../../typeocore/TypeOCore/TypeOCore.csproj"/>
 		<ProjectReference Name="ypeOTK" Include="../../typeotk/TypeOTK/TypeOTK.csproj"/>
+		<ProjectReference Name="Udrian@TypeOCore" Include="../../typeocore/TypeOCore/TypeOCore.csproj"/>
+		<ProjectReference Name="Udrian@TypeOTK" Include="../../typeotk/TypeOTK/TypeOTK.csproj"/>
 	</ItemGroup>
 </Project>
