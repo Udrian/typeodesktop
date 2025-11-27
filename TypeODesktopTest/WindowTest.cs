@@ -19,15 +19,18 @@ namespace TypeODesktopTest
         public class TestGame : Game
         {
             public TestWindowService WindowService { get; set; }
-            public override void Initialize() { }
+            protected override void Initialize() { base.Initialize(); }
+            protected override void Cleanup() { }
             public override void Update(double dt) { Exit(); }
             public override void Draw() { }
-            public override void Cleanup() { }
         }
 
         public class TestCanvas : Canvas
         {
-            public TestCanvas(IWindow window, Rectangle viewport, Matrix worldMatrix) : base(window, viewport, worldMatrix) { }
+            public TestCanvas(IWindow window, Rectangle viewport) : base(window, viewport) { }
+
+            protected override void Initialize() { }
+            protected override void Cleanup() { }
             public override void Clear(Color clearColor) { }
             public override void PostDraw() { }
             public override void PreDraw() { }
@@ -53,10 +56,10 @@ namespace TypeODesktopTest
 
         public class TestWindowHardware : Hardware, IWindowHardware
         {
-            public override void Initialize() { }
+            protected override void Initialize() { }
+            protected override void Cleanup() { }
             public DesktopWindow CreateWindow() { return new TestWindow(); }
-            public Canvas CreateCanvas(IWindow desktopWindow) { return new TestCanvas(desktopWindow, new Rectangle(), new Matrix()); }
-            public override void Cleanup() { }
+            public Canvas CreateCanvas(IWindow desktopWindow) { return new TestCanvas(desktopWindow, new Rectangle()); }
         }
         
         public class TestWindowService : WindowService

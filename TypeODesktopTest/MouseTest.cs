@@ -16,7 +16,12 @@ namespace TypeODesktopTest
         {
             public TestMouseInputService MouseInputService { get; set; }
 
-            public override void Initialize()
+            protected override void Initialize()
+            {
+                base.Initialize();
+            }
+
+            protected override void Cleanup()
             {
             }
 
@@ -28,10 +33,6 @@ namespace TypeODesktopTest
             public override void Draw()
             {
             }
-
-            public override void Cleanup()
-            {
-            }
         }
 
         public class TestMouseHardware : Hardware, IMouseHardware
@@ -41,7 +42,11 @@ namespace TypeODesktopTest
             public Vec2 CurrentWheelPosition { get; set; }
             public Vec2 OldWheelPosition { get; set; }
 
-            public override void Cleanup()
+            protected override void Initialize()
+            {
+            }
+
+            protected override void Cleanup()
             {
             }
 
@@ -53,10 +58,6 @@ namespace TypeODesktopTest
             public bool CurrentButtonUpEvent(object key)
             {
                 throw new System.NotImplementedException();
-            }
-
-            public override void Initialize()
-            {
             }
 
             public bool OldButtonDownEvent(object key)

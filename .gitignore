@@ -351,3 +351,5 @@ MigrationBackup/
 
 # TypeO
 dependency_override
+*.sln
+*.csproj

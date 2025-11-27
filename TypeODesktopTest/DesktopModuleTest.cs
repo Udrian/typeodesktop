@@ -21,7 +21,12 @@ namespace TypeODesktopTest
 
         public class TestGame : Game
         {
-            public override void Initialize()
+            protected override void Initialize()
+            {
+                base.Initialize();
+            }
+
+            protected override void Cleanup()
             {
             }
 
@@ -33,15 +38,15 @@ namespace TypeODesktopTest
             public override void Draw()
             {
             }
-
-            public override void Cleanup()
-            {
-            }
         }
 
         public class TestWindowHardware : Hardware, IWindowHardware
         {
-            public override void Cleanup()
+            protected override void Initialize()
+            {
+            }
+
+            protected override void Cleanup()
             {
             }
 
@@ -59,15 +64,16 @@ namespace TypeODesktopTest
             {
                 throw new System.NotImplementedException();
             }
-
-            public override void Initialize()
-            {
-            }
         }
 
         public class TestKeyboardHardware : Hardware, IKeyboardHardware
         {
-            public override void Cleanup() { }
+            protected override void Initialize()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            protected override void Cleanup() { }
 
             public bool CurrentKeyDownEvent(KeyboardKey key)
             {
@@ -79,10 +85,6 @@ namespace TypeODesktopTest
                 throw new System.NotImplementedException();
             }
 
-            public override void Initialize()
-            {
-                throw new System.NotImplementedException();
-            }
 
             public bool OldKeyDownEvent(KeyboardKey key)
             {
@@ -102,7 +104,11 @@ namespace TypeODesktopTest
             public Vec2 CurrentWheelPosition { get; set; }
             public Vec2 OldWheelPosition { get; set; }
 
-            public override void Cleanup()
+            protected override void Initialize()
+            {
+            }
+
+            protected override void Cleanup()
             {
             }
 
@@ -114,10 +120,6 @@ namespace TypeODesktopTest
             public bool CurrentButtonUpEvent(object key)
             {
                 throw new System.NotImplementedException();
-            }
-
-            public override void Initialize()
-            {
             }
 
             public bool OldButtonDownEvent(object key)

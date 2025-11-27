@@ -16,7 +16,12 @@ namespace TypeODesktopTest
         {
             public TestKeyboardInputService KeyboardInputService { get; set; }
 
-            public override void Initialize()
+            protected override void Initialize()
+            {
+                base.Initialize();
+            }
+
+            protected override void Cleanup()
             {
             }
 
@@ -28,10 +33,6 @@ namespace TypeODesktopTest
             public override void Draw()
             {
             }
-
-            public override void Cleanup()
-            {
-            }
         }
 
         public class TestKeyboardInputService : KeyboardInputService
@@ -41,7 +42,12 @@ namespace TypeODesktopTest
 
         public class TestKeyboardHardware : Hardware, IKeyboardHardware
         {
-            public override void Cleanup()
+            protected override void Initialize()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            protected override void Cleanup()
             {
             }
 
@@ -51,11 +57,6 @@ namespace TypeODesktopTest
             }
 
             public bool CurrentKeyUpEvent(KeyboardKey key)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public override void Initialize()
             {
                 throw new System.NotImplementedException();
             }

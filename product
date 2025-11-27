@@ -6,5 +6,6 @@
         "Udrian@TypeOCore-0.1.0",
         "Udrian@TypeOTK-0.1.0"
     ],
-    "type" : "Module"
+    "type" : "Module",
+    "testName": "TypeODesktopTest"
 }
