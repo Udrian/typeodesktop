@@ -42,14 +42,9 @@ namespace TypeODesktopTest
 
         public class TestKeyboardHardware : Hardware, IKeyboardHardware
         {
-            protected override void Initialize()
-            {
-                throw new System.NotImplementedException();
-            }
+            protected override void Initialize() { }
 
-            protected override void Cleanup()
-            {
-            }
+            protected override void Cleanup() { }
 
             public bool CurrentKeyDownEvent(KeyboardKey key)
             {

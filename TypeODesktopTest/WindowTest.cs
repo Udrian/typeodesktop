@@ -8,7 +8,6 @@ using TypeOEngine.Typedeaf.Core.Engine.Hardwares;
 using TypeOEngine.Typedeaf.Desktop.Engine.Graphics;
 using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares.Interfaces;
 using TypeOEngine.Typedeaf.Desktop.Engine.Services;
-using Xunit;
 
 namespace TypeODesktopTest
 {
@@ -65,6 +64,16 @@ namespace TypeODesktopTest
         public class TestWindowService : WindowService
         {
             public new IWindowHardware WindowHardware { get { return base.WindowHardware; } set { base.WindowHardware = value; } }
+
+            public new DesktopWindow CreateWindow()
+            {
+                return new TestWindow();
+            }
+
+            public new ICanvas CreateCanvas(IWindow window)
+            {
+                return new TestCanvas(window, new Rectangle());
+            }
         }
 
         [Fact]
@@ -72,6 +81,7 @@ namespace TypeODesktopTest
         {
             var typeO = TypeO.Create<TestGame>(GameName)
                 .AddHardware<IWindowHardware, TestWindowHardware>()
+                .AddService<WindowService>()
                 .AddService<TestWindowService>() as TypeO;
             typeO.Start();
 

@@ -1,17 +1,8 @@
-﻿using System.Linq;
-using TypeOEngine.Typedeaf.Core;
-using TypeOEngine.Typedeaf.Core.Common;
+﻿using TypeOEngine.Typedeaf.Core;
 using TypeOEngine.Typedeaf.Core.Engine;
-using TypeOEngine.Typedeaf.Core.Engine.Contents;
-using TypeOEngine.Typedeaf.Core.Engine.Graphics;
-using TypeOEngine.Typedeaf.Core.Engine.Graphics.Interfaces;
-using TypeOEngine.Typedeaf.Core.Engine.Hardwares;
 using TypeOEngine.Typedeaf.Desktop;
-using TypeOEngine.Typedeaf.Desktop.Engine.Graphics;
-using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares;
-using TypeOEngine.Typedeaf.Desktop.Engine.Hardwares.Interfaces;
 using TypeOEngine.Typedeaf.Desktop.Engine.Services;
-using Xunit;
+using TypeOEngine.Typedeaf.TK.Engine.Services;
 
 namespace TypeODesktopTest
 {
@@ -40,106 +31,11 @@ namespace TypeODesktopTest
             }
         }
 
-        public class TestWindowHardware : Hardware, IWindowHardware
-        {
-            protected override void Initialize()
-            {
-            }
-
-            protected override void Cleanup()
-            {
-            }
-
-            public Canvas CreateCanvas(IWindow window)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public ContentLoader CreateContentLoader(Canvas canvas)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public DesktopWindow CreateWindow()
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
-        public class TestKeyboardHardware : Hardware, IKeyboardHardware
-        {
-            protected override void Initialize()
-            {
-                throw new System.NotImplementedException();
-            }
-
-            protected override void Cleanup() { }
-
-            public bool CurrentKeyDownEvent(KeyboardKey key)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public bool CurrentKeyUpEvent(KeyboardKey key)
-            {
-                throw new System.NotImplementedException();
-            }
-
-
-            public bool OldKeyDownEvent(KeyboardKey key)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public bool OldKeyUpEvent(KeyboardKey key)
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
-        public class TestMouseHardware : Hardware, IMouseHardware
-        {
-            public Vec2 CurrentMousePosition { get; set; }
-            public Vec2 OldMousePosition { get; set; }
-            public Vec2 CurrentWheelPosition { get; set; }
-            public Vec2 OldWheelPosition { get; set; }
-
-            protected override void Initialize()
-            {
-            }
-
-            protected override void Cleanup()
-            {
-            }
-
-            public bool CurrentButtonDownEvent(object key)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public bool CurrentButtonUpEvent(object key)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public bool OldButtonDownEvent(object key)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public bool OldButtonUpEvent(object key)
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
         [Fact]
         public void LoadDesktopModule()
         {
             var typeO = TypeO.Create<TestGame>(GameName)
-                             //.AddHardware<IWindowHardware, TestWindowHardware>()
-                             //.AddHardware<IKeyboardHardware, TestKeyboardHardware>()
-                             //.AddHardware<IMouseHardware, TestMouseHardware>()
+                             .AddService<TKGameService>()
                              .LoadModule<DesktopModule>() as TypeO;
             typeO.Start();
             var module = typeO.Context.Modules.FirstOrDefault(m => m.GetType() == typeof(DesktopModule)) as DesktopModule;
