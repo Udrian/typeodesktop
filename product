@@ -3,9 +3,9 @@
     "version": "0.1.0",
     "externals": [],
     "dependencies": [
-        "Udrian@TypeOCore-0.1.0",
-        "Udrian@TypeOTK-0.1.0"
+        "Udrian@TypeOCore-0.1.0.dev",
+        "Udrian@TypeOTK-0.1.0.dev"
     ],
-    "type" : "Module",
+    "type" : "module",
     "testName": "TypeODesktopTest"
 }
