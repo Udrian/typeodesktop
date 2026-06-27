@@ -49,6 +49,10 @@ namespace TypeOEngine.Typedeaf.Desktop
             {
                 Canvas = WindowService.CreateCanvas(this);
             }
+
+            protected override void Cleanup()
+            {
+            }
         }
     }
 }
