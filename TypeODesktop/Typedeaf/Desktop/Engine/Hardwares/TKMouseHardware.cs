@@ -15,6 +15,7 @@ namespace TypeOEngine.Typedeaf.Desktop
             private TKGameService GameService { get; set; }
 
             private MouseState CurrentState { get; set; }
+            private MouseStateSnapshot SnapshotState { get; set; }
 
             public Vec2 CurrentMousePosition { get; set; }
             public Vec2 OldMousePosition { get; set; }
@@ -33,21 +34,31 @@ namespace TypeOEngine.Typedeaf.Desktop
 
             public bool CurrentButtonDownEvent(object key)
             {
-                return CurrentState.IsButtonDown((MouseButton)key);
+                return SnapshotState?.IsButtonDown((MouseButton)key)
+                    ?? CurrentState?.IsButtonDown((MouseButton)key)
+                    ?? false;
             }
 
             public bool CurrentButtonUpEvent(object key)
             {
-                return CurrentState.IsButtonReleased((MouseButton)key); ;
+                return SnapshotState?.IsButtonReleased((MouseButton)key)
+                    ?? CurrentState?.IsButtonReleased((MouseButton)key)
+                    ?? false;
             }
 
             public bool OldButtonDownEvent(object key)
             {
-                return CurrentState.WasButtonDown((MouseButton)key);
+                return SnapshotState?.WasButtonDown((MouseButton)key)
+                    ?? CurrentState?.WasButtonDown((MouseButton)key)
+                    ?? false;
             }
 
             public bool OldButtonUpEvent(object key)
             {
+                if (SnapshotState != null)
+                    return !SnapshotState.WasButtonDown((MouseButton)key);
+                if (CurrentState == null)
+                    return false;
                 return !CurrentState.WasButtonDown((MouseButton)key);
             }
 
@@ -55,14 +66,33 @@ namespace TypeOEngine.Typedeaf.Desktop
             {
                 TKGameWindow game = GameService.TKGames.FirstOrDefault();
                 
-                if(game != null)
+                if(game != null && SnapshotState == null)
                 {
-                    CurrentState = game.MouseState.GetSnapshot();
+                    SetState(game.MouseState.GetSnapshot());
+                }
+            }
+
+            public void SetState(object? state)
+            {
+                if (state is MouseState mouseState)
+                {
+                    CurrentState = mouseState;
+                    SnapshotState = null;
 
                     CurrentMousePosition = new Vec2(CurrentState.Position.X, CurrentState.Position.Y);
                     OldMousePosition = new Vec2(CurrentState.PreviousPosition.X, CurrentState.PreviousPosition.Y);
                     CurrentWheelPosition = new Vec2(CurrentState.Scroll.X, CurrentState.Scroll.Y);
                     OldWheelPosition = new Vec2(CurrentState.PreviousScroll.X, CurrentState.PreviousScroll.Y);
+                }
+                else if (state is MouseStateSnapshot snapshotState)
+                {
+                    CurrentState = null;
+                    SnapshotState = snapshotState;
+
+                    CurrentMousePosition = new Vec2(snapshotState.Position.X, snapshotState.Position.Y);
+                    OldMousePosition = new Vec2(snapshotState.PreviousPosition.X, snapshotState.PreviousPosition.Y);
+                    CurrentWheelPosition = new Vec2(snapshotState.Scroll.X, snapshotState.Scroll.Y);
+                    OldWheelPosition = new Vec2(snapshotState.PreviousScroll.X, snapshotState.PreviousScroll.Y);
                 }
             }
         }

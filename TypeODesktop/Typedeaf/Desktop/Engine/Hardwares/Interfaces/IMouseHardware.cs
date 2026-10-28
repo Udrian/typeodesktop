@@ -16,6 +16,8 @@ namespace TypeOEngine.Typedeaf.Desktop
             public bool CurrentButtonUpEvent(object key);
             public bool OldButtonDownEvent(object key);
             public bool OldButtonUpEvent(object key);
+
+            public void SetState(object? state);
         }
     }
 }
