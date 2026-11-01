@@ -69,6 +69,11 @@ namespace TypeODesktopTest
             {
                 throw new System.NotImplementedException();
             }
+
+            public void SetState(object state)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public class TestMouseInputService : MouseInputService
