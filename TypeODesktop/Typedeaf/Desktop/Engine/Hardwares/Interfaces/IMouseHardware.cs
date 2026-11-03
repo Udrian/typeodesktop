@@ -36,7 +36,7 @@ namespace TypeOEngine.Typedeaf.Desktop
 
             /// <summary>Updates the hardware with a new mouse state.</summary>
             /// <param name="state">The new state, or <c>null</c>.</param>
-            public void SetState(object? state);
+            public void SetState(object state);
         }
     }
 }

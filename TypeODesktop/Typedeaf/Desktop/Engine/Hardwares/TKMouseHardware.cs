@@ -72,7 +72,7 @@ namespace TypeOEngine.Typedeaf.Desktop
                 }
             }
 
-            public void SetState(object? state)
+            public void SetState(object state)
             {
                 if (state is MouseState mouseState)
                 {

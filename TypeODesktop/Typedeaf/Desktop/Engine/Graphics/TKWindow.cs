@@ -27,7 +27,7 @@ namespace TypeOEngine.Typedeaf.Desktop
                     Location = new Vector2i(position.X, position.Y),
                     WindowState = fullscreen ? WindowState.Fullscreen : WindowState.Normal,
                     WindowBorder = borderless ? WindowBorder.Hidden : WindowBorder.Fixed,
-                    Size = new Vector2i(size.X, size.Y),
+                    ClientSize = new Vector2i(size.X, size.Y),
                     Title = title
                 };
 
