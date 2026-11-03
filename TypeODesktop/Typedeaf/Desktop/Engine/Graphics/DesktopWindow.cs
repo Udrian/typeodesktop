@@ -32,6 +32,9 @@ namespace TypeOEngine.Typedeaf.Desktop
             public ICanvas Canvas { get; set; }
 
             // Services
+            /// <summary>
+            /// Gets or sets the service used to create canvases for this window.
+            /// </summary>
             protected WindowService WindowService { get; set; }
 
             /// <summary>
@@ -50,6 +53,7 @@ namespace TypeOEngine.Typedeaf.Desktop
                 Canvas = WindowService.CreateCanvas(this);
             }
 
+            /// <inheritdoc/>
             protected override void Cleanup()
             {
             }

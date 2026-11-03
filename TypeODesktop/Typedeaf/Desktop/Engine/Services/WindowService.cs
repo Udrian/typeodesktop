@@ -19,8 +19,10 @@ namespace TypeOEngine.Typedeaf.Desktop
         public class WindowService : Service, IHasGame
         {
             private ILogger Logger { get; set; }
+            /// <summary>Gets or sets the window hardware used to create windows.</summary>
             protected IWindowHardware WindowHardware { get; set; }
 
+            /// <summary>Gets or sets the game this service belongs to.</summary>
             public Game Game { get; set; }
 
             /// <inheritdoc/>
