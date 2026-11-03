@@ -4,7 +4,12 @@
   "externals": [],
   "dependencies": [
     "Udrian@TypeOCore-0.1.0.dev",
-    "Udrian@TypeOTK-0.1.0.dev"
+    "Udrian@TypeOTK-0.1.0.dev",
+    "Avalonia-12.1.4;nuget",
+    "coverlet.collector-10.1.0;nuget;test",
+    "Microsoft.NET.Test.Sdk-18.11.0;nuget;test",
+    "xunit-2.9.3;nuget;test",
+    "xunit.runner.visualstudio-4.0.1;nuget;test"
   ],
   "type": "module",
   "project": [
