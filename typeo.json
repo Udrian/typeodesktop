@@ -1,11 +1,24 @@
 {
-    "name": "TypeODesktop",
-    "version": "0.1.0",
-    "externals": [],
-    "dependencies": [
-        "Udrian@TypeOCore-0.1.0.dev",
-        "Udrian@TypeOTK-0.1.0.dev"
-    ],
-    "type" : "module",
-    "testName": "TypeODesktopTest"
+  "name": "TypeODesktop",
+  "version": "0.1.0",
+  "externals": [],
+  "dependencies": [
+    "Udrian@TypeOCore-0.1.0.dev",
+    "Udrian@TypeOTK-0.1.0.dev"
+  ],
+  "type": "module",
+  "project": [
+    {
+      "Name": "TypeODesktop",
+      "type": "",
+      "depends_on": []
+    },
+    {
+      "Name": "TypeODesktopTest",
+      "type": "test",
+      "depends_on": [
+        "TypeODesktop"
+      ]
+    }
+  ]
 }
