@@ -1,10 +1,10 @@
 {
   "name": "TypeODesktop",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "externals": [],
   "dependencies": [
-    "Udrian@TypeOCore-0.1.0.dev",
-    "Udrian@TypeOTK-0.1.0.dev",
+    "Udrian@TypeOCore-1.0.0",
+    "Udrian@TypeOTK-1.0.0",
     "coverlet.collector-10.1.0;nuget;test",
     "Microsoft.NET.Test.Sdk-18.11.0;nuget;test",
     "xunit-2.9.3;nuget;test",
