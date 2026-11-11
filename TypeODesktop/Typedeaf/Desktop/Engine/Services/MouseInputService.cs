@@ -45,6 +45,24 @@ namespace TypeOEngine.Typedeaf.Desktop
             {
                 KeyConverter.SetKeyAlias(input, key);
             }
+
+            /// <summary>
+            /// Removes a key alias.
+            /// </summary>
+            /// <param name="input">The key alias to remove.</param>
+            public void RemoveKeyAlias(object input)
+            {
+                KeyConverter.RemoveKeyAlias(input);
+            }
+
+            /// <summary>
+            /// Clears all key aliases registered with the key converter.
+            /// </summary>
+            public void ClearKeyAliases()
+            {
+                KeyConverter.ClearKeyAliases();
+            }
+
             /// <summary>Determines whether the input is currently held down.</summary>
             /// <param name="input">The input to check.</param>
             /// <returns><c>true</c> if the input is down.</returns>
