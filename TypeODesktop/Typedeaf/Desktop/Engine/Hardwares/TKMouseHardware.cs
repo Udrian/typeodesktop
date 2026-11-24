@@ -10,7 +10,7 @@ namespace TypeOEngine.Typedeaf.Desktop
 {
     namespace Engine.Hardwares
     {
-        internal class TKMouseHardware : Hardware, IMouseHardware, IUpdatable
+        internal class TKMouseHardware : Hardware, IMouseHardware, IMainThreadUpdatable
         {
             private TKGameService GameService { get; set; }
 
